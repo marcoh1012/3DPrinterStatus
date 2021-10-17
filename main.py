@@ -30,6 +30,8 @@ def setColor(state):
         print('offline')
 
 
+print('Connecting to Printer')
+
 while True:
     time.sleep(5)
     state = getPrinterStatus()
