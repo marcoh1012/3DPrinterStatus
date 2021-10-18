@@ -1,4 +1,6 @@
 from settings import url, api_token
+from rpi_ws281x import Color
+from lights import colorWipe
 import time
 import requests
 import json
@@ -17,9 +19,11 @@ def getPrinterStatus():
 
 def setColor(state):
     if state == 'Operational':
+        colorWipe(color=Color(0,255,0))
         # Set to color Green
         print('connected')
     elif state == 'Printing':
+        colorWipe(color=Color(0,0,255))
         # Set to Green color flashing
         print('printing')
     elif state == 'Paused' or state == 'Pausing':
@@ -31,6 +35,8 @@ def setColor(state):
 
 
 print('Connecting to Printer')
+
+
 
 while True:
     time.sleep(5)
