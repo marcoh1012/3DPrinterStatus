@@ -70,3 +70,27 @@ def theaterChaseRainbow(strip, wait_ms=50):
             time.sleep(wait_ms / 1000.0)
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i + q, 0)
+
+
+def breathing(strip,color, wait_ms=750):
+    """Breathing affect for the color"""
+
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, color)
+        strip.show()
+
+    end = time.time() + 6
+
+    while time.time() < end:
+        strip.setBrightness(15)
+        strip.show()
+        time.sleep(wait_ms/1000)
+        strip.setBrightness(150)
+        strip.show()
+        time.sleep(wait_ms/1000)
+        strip.setBrightness(255)
+        strip.show()
+        time.sleep(wait_ms/1000)
+        strip.setBrightness(150)
+        strip.show()
+

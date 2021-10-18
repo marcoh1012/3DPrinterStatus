@@ -1,6 +1,6 @@
 from settings import url, api_token
 from rpi_ws281x import PixelStrip, Color
-from lights import colorWipe
+from lights import breathing, colorWipe
 import time
 import requests
 import json
@@ -40,16 +40,23 @@ def setColor(state):
     if state == 'Operational':
         colorWipe(strip, color=Color(0,255,0))
         # Set to color Green
-        print('connected')
+        print('Operational')
     elif state == 'Printing':
-        colorWipe(strip, color=Color(0,0,255))
+        breathing(strip, color=Color(0,0,255))
         # Set to Green color flashing
         print('printing')
     elif state == 'Paused' or state == 'Pausing':
         # Set color to yellow
+        colorWipe(strip,Color(255, 165, 0))
         print('paused')
-    elif state == 'Cancelling' or state == "Error" or state == 'Offline' or state == 'Offline after error':
+
+    elif state == "Error" or state == "Offline after error":
+        #Breathing color in Red
+        breathing(strip,Color=(255,0,0))
+        print("Error")
+    elif state == 'Cancelling' or state == 'Offline':
         # Set color to Red
+        colorWipe(strip, Color(255,0,0))
         print('offline')
 
 
