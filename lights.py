@@ -50,7 +50,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
         time.sleep(wait_ms / 1000.0)
 
 
-def rainbowCycle(strip, wait_ms=20, iterations=5):
+def rainbowCycle(strip, wait_ms=20, iterations=10):
     """Draw rainbow that uniformly distributes itself across all pixels."""
     for j in range(256 * iterations):
         for i in range(strip.numPixels()):
@@ -72,25 +72,21 @@ def theaterChaseRainbow(strip, wait_ms=50):
                 strip.setPixelColor(i + q, 0)
 
 
-def breathing(strip,color, wait_ms=750):
+def breathing(strip,color, wait_ms=1000):
     """Breathing affect for the color"""
 
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
         strip.show()
 
-    end = time.time() + 6
+    end = time.time() + 10
 
     while time.time() < end:
         strip.setBrightness(15)
         strip.show()
         time.sleep(wait_ms/1000)
-        strip.setBrightness(150)
-        strip.show()
-        time.sleep(wait_ms/1000)
         strip.setBrightness(255)
         strip.show()
         time.sleep(wait_ms/1000)
-        strip.setBrightness(150)
-        strip.show()
+        
 

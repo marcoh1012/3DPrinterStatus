@@ -1,6 +1,6 @@
 from settings import url, api_token
 from rpi_ws281x import PixelStrip, Color
-from lights import breathing, colorWipe
+from lights import breathing, colorWipe, rainbowCycle
 import time
 import requests
 import json
@@ -34,6 +34,7 @@ def getPrinterStatus():
         data = json.loads(res.content.decode('utf-8'))
         return data['state']
     else:
+        rainbowCycle(strip)
         return 'Cant Connect'
 
 def setColor(state):
@@ -42,7 +43,7 @@ def setColor(state):
         # Set to color Green
         print('Operational')
     elif state == 'Printing':
-        breathing(strip, color=Color(0,0,255))
+        breathing(strip, color=Color(0,255,0))
         # Set to Green color flashing
         print('printing')
     elif state == 'Paused' or state == 'Pausing':
