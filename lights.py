@@ -9,6 +9,7 @@ import time
 from rpi_ws281x import PixelStrip, Color
 import argparse
 
+
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
     """Wipe color across display a pixel at a time."""
@@ -79,14 +80,11 @@ def breathing(strip,color, wait_ms=1000):
         strip.setPixelColor(i, color)
         strip.show()
 
-    end = time.time() + 10
-
-    while time.time() < end:
-        strip.setBrightness(15)
-        strip.show()
-        time.sleep(wait_ms/1000)
-        strip.setBrightness(255)
-        strip.show()
-        time.sleep(wait_ms/1000)
+    strip.setBrightness(5)
+    strip.show()
+    time.sleep(wait_ms/1000)
+    strip.setBrightness(255)
+    strip.show()
+    time.sleep(wait_ms/1000)
         
 
