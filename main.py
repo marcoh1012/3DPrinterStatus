@@ -59,6 +59,8 @@ def setColor(state):
         # Set color to Red
         colorWipe(strip, Color(255,0,0))
         print('offline')
+    else:
+        rainbowCycle(strip)
 
 
 print('Connecting to Printer')
@@ -66,6 +68,6 @@ print('Connecting to Printer')
 
 
 while True:
-    time.sleep(5)
+    time.sleep(1)
     state = getPrinterStatus()
     setColor(state)
