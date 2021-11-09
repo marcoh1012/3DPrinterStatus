@@ -48,16 +48,16 @@ def setColor(state):
         print('printing')
     elif state == 'Paused' or state == 'Pausing':
         # Set color to yellow
-        colorWipe(strip,Color(255, 165, 0))
+        colorWipe(strip,color=Color(255, 165, 0))
         print('paused')
 
     elif state == "Error" or state == "Offline after error":
         #Breathing color in Red
-        breathing(strip,Color=(255,0,0))
+        breathing(strip,color=Color(255,0,0))
         print("Error")
     elif state == 'Cancelling' or state == 'Offline':
         # Set color to Red
-        colorWipe(strip, Color(255,0,0))
+        colorWipe(strip, color=Color(255,0,0))
         print('offline')
     else:
         rainbowCycle(strip)
